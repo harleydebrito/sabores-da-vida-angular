@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mercearia-sabores-da-vida": {
+      "hosting": {
+        "sabores-da-vida": [
+          "mercearia-sabores-da-vida"
+        ]
+      }
+    }
+  }
+}

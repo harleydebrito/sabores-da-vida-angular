@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -117,8 +121,16 @@
               "devServerTarget": "sabores-da-vida:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "sabores-da-vida"
+    }
+  },
+  "defaultProject": "sabores-da-vida",
+  "cli": {
+    "analytics": "10a95f05-347b-4ad5-bbbc-6e792a43e083"
+  }
 }
