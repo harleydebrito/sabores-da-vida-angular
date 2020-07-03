@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -11,25 +11,36 @@ import { Router } from '@angular/router';
 
 export class AuthService {
 
-  private loginUrl = `${environment.api}${environment.restful}login`;
-  private authenticated = false;
+  private loginUrl = `${environment.api}${environment.restful}/login`;
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  public login(credential: Credential){
-    console.log(credential);
+  public authorize(url: string) {
+    return this.http.get<any>(url).pipe(take(1)).subscribe(
+      res => {},
+      err => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) {
+            this.logout();
+          }
+        }
+      }
+    );
+  }
+
+  public login(credential: Credential) {
     return this.http.post<any>(this.loginUrl, credential).pipe(take(1));
   }
 
-  public logged(): boolean{
+  public logged(){
     return !!localStorage.getItem('token');
   }
 
-  public getToken(): string{
+  public getToken(): string {
     return localStorage.getItem('token');
   }
 
-  public logout(): void{
+  public logout(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:8080/',
-  restful: 'sabores-da-vida-restful-api/api/'
+  api: 'http://localhost:8080',
+  restful: '/sabores-da-vida-restful-api/api'
 };
 
 /*
