@@ -20,9 +20,7 @@ export class AuthService {
       res => {},
       err => {
         if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
-            this.logout();
-          }
+          this.logout();
         }
       }
     );
