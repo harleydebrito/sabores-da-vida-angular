@@ -2,18 +2,19 @@
     <div class="col-md-5 mx-auto">
         <div class="card rounded">
             <div class="card-body">
-                <form>
+                <form [formGroup]="form">
                     <h1>Entrar</h1>
                     <div class="form-group">
                         <label for="user">Usuário</label>
-                        <input id="user" type="text" class="form-control" autocomplete="username">
+                        <input formControlName="user" id="user" type="email" class="form-control" autocomplete="username">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" type="password" class="form-control" autocomplete="current-password">
+                        <label for="password">Senha</label>
+                        <input formControlName="password" id="password" type="password" class="form-control" autocomplete="current-password">
                     </div>
-                    <button type="button" class="btn btn-primary btn-block">Entrar</button>
+                    <button (click)="login()" type="button" class="btn btn-primary btn-block">Entrar</button>
                 </form>
+                {{form.value | json}}
             </div>
         </div>
     </div>
