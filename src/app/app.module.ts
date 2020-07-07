@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptorService } from './shared/token-interceptor.service';
 import { NotFoundPageComponent } from './shared/not-found-page/not-found-page.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,9 @@ import { NotFoundPageComponent } from './shared/not-found-page/not-found-page.co
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
+  },{
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
   }],
   bootstrap: [AppComponent]
 })

@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.authorize(`${environment.api}${environment.restful}${this.router.url}`);
+    //TESTE
+    // this.authService.authorize(`${environment.api}${environment.restful}`);
+    //REMOVER
   }
 
 }

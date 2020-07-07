@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private loginUrl = `${environment.api}${environment.restful}/login`;
+  //TESTE
+  // private loginUrl = `${environment.api}${environment.restful}`;
+  //REMOVER
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -20,7 +23,11 @@ export class AuthService {
       res => {},
       err => {
         if (err instanceof HttpErrorResponse) {
-          this.logout();
+          if(err.status === 401){
+            this.logout();
+          }else{
+            this.router.navigate(['/erro']);
+          }
         }
       }
     );

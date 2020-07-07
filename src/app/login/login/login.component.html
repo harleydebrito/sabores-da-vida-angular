@@ -3,21 +3,29 @@
         <div class="card rounded">
             <div class="card-body">
                 <form [formGroup]="form">
-                    <h1>Entrar</h1>
+                    <h1 class="text-center">Sabores da Vida</h1>
                     <div class="form-group">
-                        <label for="user">Usuário</label>
-                        <input formControlName="user" id="user" type="email" class="form-control" autocomplete="username">
+                        <label [ngClass]="applyError('user')" for="user">Usuário</label>
+                        <input [ngClass]="applyError('user')" formControlName="user" id="user" type="email" class="form-control" autocomplete="username">
+                        <div class="invalid-feedback" *ngIf="form.get('user').hasError('required')">Digite um usuário</div>
+                        <div class="invalid-feedback" *ngIf="form.get('user').hasError('email')">Digite um e-mail válido</div>
+                        <div class="invalid-feedback" *ngIf="form.get('user').hasError('wrong')">Usuário ou senha estão incorretos</div>
                     </div>
                     <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input formControlName="password" id="password" type="password" class="form-control" autocomplete="current-password">
+                        <label [ngClass]="applyError('password')" for="password">Senha</label>
+                        <input [ngClass]="applyError('password')" formControlName="password" id="password" type="password" class="form-control" autocomplete="current-password">
+                        <div class="invalid-feedback" *ngIf="form.get('password').hasError('minlength')">Senha deve ter no mínimo {{form.get('password').errors.minlength.requiredLength}} caracteres</div>
+                        <div class="invalid-feedback" *ngIf="form.get('password').hasError('required')">Digite uma senha</div>
+                        <div class="invalid-feedback" *ngIf="form.get('password').hasError('wrong')">Usuário ou senha estão incorretos</div>
                     </div>
-                    <button (click)="login()" type="button" class="btn btn-primary btn-block">Entrar</button>
+                    <button [disabled]="!form.valid" (click)="login()" type="button" class="btn btn-primary btn-block">Entrar</button>
+                    <small id="passwordHelpBlock" class="form-text text-muted text-center">
+                        Ainda não possui usuário? <a class="text-muted" routerLink="./sign-up">Cadastrar</a>.
+                    </small>
+                    <small id="passwordHelpBlock" class="form-text text-muted text-center">
+                        <a class="text-muted" routerLink="./forgot">ESQUECI MEU LOGIN</a>
+                    </small>
                 </form>
-                {{form.value | json}}
-                <h5>*É esperado que o usuário não consiga navegar para nenhum outro link do aplicativo, e que ao acessar um link inexistente, seja redirecionado para uma página de erro (tente mudar de /login para /home, e de /login para qualquer outra coisa).</h5>
-                <h5>*É esperado que os campos "user" e "password" sejam atualizados em tempo real.</h5>
-                <h5>*Não coloque credenciais que você utiliza no seu dia a dia.</h5>
             </div>
         </div>
     </div>
