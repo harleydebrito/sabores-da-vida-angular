@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private loginUrl = `${environment.api}${environment.restful}/login`;
+  authorized = false;
   //TESTE
   // private loginUrl = `${environment.api}${environment.restful}`;
   //REMOVER
@@ -20,7 +21,7 @@ export class AuthService {
 
   public authorize(url: string) {
     return this.http.get<any>(url).pipe(take(1)).subscribe(
-      res => {},
+      res => {this.authorized = true},
       err => {
         if (err instanceof HttpErrorResponse) {
           if(err.status === 401){
@@ -47,6 +48,7 @@ export class AuthService {
 
   public logout(): void {
     localStorage.removeItem('token');
+    this.authorized = false;
     this.router.navigate(['/login']);
   }
 }

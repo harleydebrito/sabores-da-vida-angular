@@ -24,13 +24,20 @@ export class LoginComponent implements OnInit {
     }
     this.form = this.formBuilder.group({
       user: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required, Validators.minLength(9)]]
+      password: [null, [Validators.required]]
     });
   }
 
   public login(): void {
     let credential: Credential = this.form.value;
-  
+    this.form.markAllAsTouched();
+
+    if (this.form.get('user').getError('wrong') || this.form.get('password').getError('wrong')) {
+      this.form.get('user').updateValueAndValidity();
+      this.form.get('password').updateValueAndValidity();
+    }
+
+    if (!this.form.invalid) {
       this.authService.login(credential).subscribe(
         res => {
           console.log(res);
@@ -38,15 +45,17 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         },
         err => {
-          if(err.status === 401){
-            this.form.get('user').setErrors({wrong: true});
-            this.form.get('password').setErrors({wrong: true});
-          }else{
+          if (err.status === 401) {
+            this.form.get('user').setErrors({ wrong: true });
+            
+            this.form.get('password').setErrors({ wrong: true });
+          } else {
             this.router.navigate(['/error']);
           }
         }
       );
     }
+  }
 
   public valid(field) {
     return this.form.get(field).valid;
@@ -58,11 +67,11 @@ export class LoginComponent implements OnInit {
 
   public applyError(field) {
     return {
-      'is-invalid text-danger': !this.valid(field) && this.touched(field),
+      'is-invalid': !this.valid(field) && this.touched(field),
     }
   }
 
-  resetForm(){
+  resetForm() {
     this.form.reset();
     this.form.get('user').markAsTouched();
     this.form.get('password').markAsTouched();
