@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   public ngOnInit(): void {
     //TESTE
-    //localStorage.setItem('token', res.token);
+    // localStorage.setItem('token', res.token);
     //REMOVER
     if (this.authService.logged()) {
       this.router.navigate(['/home']);
