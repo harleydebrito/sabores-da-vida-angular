@@ -25,10 +25,10 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
-  },{
+  }, {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  },{ provide: LOCALE_ID, useValue: 'pt' }],
+  }, { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
