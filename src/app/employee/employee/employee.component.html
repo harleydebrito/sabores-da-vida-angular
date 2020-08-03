@@ -1,1 +1,24 @@
-<p>{{data | date}}</p>
+<br>
+<h3>Funcionários</h3>
+<div class="container" style="padding: 0px;">
+    <div class="container-fluid border rounded-lg" style="padding: 0px;">
+        <div class="list-group" role="tablist" [ngSwitch]="id">
+            <a (click)="id = 1" class="list-group-item list-group-item-action" [routerLink]="[1]"
+                data-toggle="list">Harley</a>
+            <div class="container">
+                <app-router *ngSwitchCase="1"></app-router>
+            </div>
+
+            <a (click)="id = 2" class="list-group-item list-group-item-action" [routerLink]="[2]"
+                data-toggle="list">Harley</a>
+            <app-router *ngSwitchCase="2"></app-router>
+            <a (click)="id = 3" class="list-group-item list-group-item-action" [routerLink]="[3]"
+                data-toggle="list">Harley</a>
+            <app-router *ngSwitchCase="3"></app-router>
+            <a (click)="id = 4" class="list-group-item list-group-item-action" [routerLink]="[4]"
+                data-toggle="list">Harley</a>
+            <app-router *ngSwitchCase="4"></app-router>
+        </div>
+
+    </div>
+</div>

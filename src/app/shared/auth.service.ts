@@ -19,26 +19,11 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  public authorize(url: string) {
-    return this.http.get<any>(url).pipe(take(1)).subscribe(
-      res => {this.authorized = true},
-      err => {
-        if (err instanceof HttpErrorResponse) {
-          if(err.status === 401){
-            this.logout();
-          }else{
-            this.router.navigate(['/erro']);
-          }
-        }
-      }
-    );
-  }
-
   public login(credential: Credential) {
     return this.http.post<any>(this.loginUrl, credential).pipe(take(1));
   }
 
-  public logged(){
+  public logged() {
     return !!localStorage.getItem('token');
   }
 

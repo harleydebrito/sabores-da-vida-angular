@@ -9,5 +9,5 @@ import { AuthService } from './shared/auth.service';
 export class AppComponent {
   title = 'sabores-da-vida';
 
-  constructor(public authService: AuthService){}
+  constructor() { }
 }
