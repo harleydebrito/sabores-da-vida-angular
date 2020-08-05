@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://192.168.0.105:8080',
+  api: 'http://192.168.0.114:8080',
   restful: '/sabores-da-vida-restful-api/api'
 };
 
