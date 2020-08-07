@@ -1,0 +1,14 @@
+{
+    "routes": [
+        {
+            "id": 0,
+            "title": "Dashboard",
+            "link": "/home"
+        },
+        {
+            "id": 1,
+            "title": "Employee",
+            "link": "/employee"
+        }
+    ]
+}
