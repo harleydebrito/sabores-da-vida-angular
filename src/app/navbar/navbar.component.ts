@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Navbar } from './navbar.model';
-import { Observable } from 'rxjs';
+import { NavbarService } from './navbar.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +10,17 @@ import { Observable } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
 
-  routes: Navbar[] = [
-    { id: 0, title: "Dashboard", link: "/home" },
-    { id: 1, title: "Funcionário", link: "/employee" }
-  ];
+  routes: Navbar[] = [];
 
-  constructor() {
+  constructor(private service: NavbarService) { }
 
+  public ngOnInit(): void {
+    this.service.get().pipe(
+      map((response) => this.routes = response)
+    ).subscribe();
   }
 
-  public ngOnInit(): void { }
+  public onOpenChange(event: any) {
+
+  }
 }

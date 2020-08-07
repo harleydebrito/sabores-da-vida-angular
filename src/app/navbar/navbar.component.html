@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" dropdown #dropdown="bs-dropdown">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
         <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-badge-hd-fill align-top" fill="currentColor"
             xmlns="http://www.w3.org/2000/svg">
@@ -9,14 +9,15 @@
         Sabores da Vida
     </a>
 
-    <button class="navbar-toggler" type="button" dropdownToggle data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
+        (isOpenChange)="onOpenChange($event)">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a *ngFor="let route of routes" (click)="dropdown.isOpen = !dropdown.isOpen" class="nav-link"
-                [routerLink]="route.link" [routerLinkActive]="['active']">{{route.title}}</a>
+            <a *ngFor="let route of routes" class="nav-link" [routerLink]="route.link"
+                [routerLinkActive]="['active']">{{route.title}}</a>
         </div>
     </div>
 </nav>
