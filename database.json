@@ -10,5 +10,155 @@
             "title": "Employee",
             "link": "/employee"
         }
+    ],
+    "employee": [
+        {
+            "id": 0,
+            "name": "Harley Vitor Santana de Brito",
+            "salary": 1045.00,
+            "phone": 37999491310,
+            "admin": true
+        },
+        {
+            "id": 1,
+            "name": "Sabrina Ferreira Silva",
+            "salary": 2090.00,
+            "phone": 37998648903,
+            "admin": false
+        }
+    ],
+    "schedule": [
+        {
+            "id": 0,
+            "day": "Segunda",
+            "startHour": 6,
+            "startMinute": 0,
+            "endHour": 14,
+            "endMinute": 0
+        },
+        {
+            "id": 1,
+            "day": "Segunda",
+            "startHour": 14,
+            "startMinute": 0,
+            "endHour": 22,
+            "endMinute": 0
+        },
+        {
+            "id": 2,
+            "day": "Terça",
+            "startHour": 6,
+            "startMinute": 0,
+            "endHour": 14,
+            "endMinute": 0
+        },
+        {
+            "id": 3,
+            "day": "Terça",
+            "startHour": 14,
+            "startMinute": 0,
+            "endHour": 22,
+            "endMinute": 0
+        },
+        {
+            "id": 4,
+            "day": "Quarta",
+            "startHour": 6,
+            "startMinute": 0,
+            "endHour": 14,
+            "endMinute": 0
+        },
+        {
+            "id": 5,
+            "day": "Quarta",
+            "startHour": 14,
+            "startMinute": 0,
+            "endHour": 22,
+            "endMinute": 0
+        },
+        {
+            "id": 6,
+            "day": "Quinta",
+            "startHour": 6,
+            "startMinute": 0,
+            "endHour": 14,
+            "endMinute": 0
+        },
+        {
+            "id": 7,
+            "day": "Quinta",
+            "startHour": 14,
+            "startMinute": 0,
+            "endHour": 22,
+            "endMinute": 0
+        },
+        {
+            "id": 8,
+            "day": "Sexta",
+            "startHour": 6,
+            "startMinute": 0,
+            "endHour": 14,
+            "endMinute": 0
+        },
+        {
+            "id": 9,
+            "day": "Sexta",
+            "startHour": 14,
+            "startMinute": 0,
+            "endHour": 22,
+            "endMinute": 0
+        }
+    ],
+    "scheduleEmployee": [
+        {
+            "id": 0,
+            "employeeId": 0,
+            "scheduleId": 0
+        },
+        {
+            "id": 1,
+            "employeeId": 0,
+            "scheduleId": 2
+        },
+        {
+            "id": 2,
+            "employeeId": 0,
+            "scheduleId": 4
+        },
+        {
+            "id": 3,
+            "employeeId": 0,
+            "scheduleId": 6
+        },
+        {
+            "id": 4,
+            "employeeId": 0,
+            "scheduleId": 8
+        },
+        {
+            "id": 5,
+            "employeeId": 1,
+            "scheduleId": 1
+        },
+        {
+            "id": 6,
+            "employeeId": 1,
+            "scheduleId": 3
+        },
+        {
+            "id": 7,
+            "employeeId": 1,
+            "scheduleId": 5
+        },
+        {
+            "id": 8,
+            "employeeId": 1,
+            "scheduleId": 7
+        },
+        {
+            "id": 9,
+            "employeeId": 1,
+            "scheduleId": 9
+        }
     ]
 }
